@@ -6,6 +6,7 @@ import authService from "../../services/auth.service";
 function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
@@ -14,11 +15,12 @@ function SignupPage() {
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
+  const handleConfirmPassword = (e) => setConfirmPassword(e.target.value);
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     // Create an object representing the request body
-    const requestBody = { email, password, name };
+    const requestBody = { email, password, name, confirmPassword };
 
     // Send a request to the server using axios
     /* 
@@ -50,8 +52,13 @@ function SignupPage() {
       <h1>Sign Up</h1>
 
       <form onSubmit={handleSignupSubmit}>
+        <label>Name:</label>
+        <input type="text" name="name" value={name} onChange={handleName} />
+        <br />
+
         <label>Email:</label>
         <input type="email" name="email" value={email} onChange={handleEmail} />
+        <br />
 
         <label>Password:</label>
         <input
@@ -60,9 +67,16 @@ function SignupPage() {
           value={password}
           onChange={handlePassword}
         />
+        <br />
 
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
+        <label> Confirm Password:</label>
+        <input
+          type="password"
+          name="confirmPassword"
+          value={confirmPassword}
+          onChange={handleConfirmPassword}
+        />
+        <br />
 
         <button type="submit">Sign Up</button>
       </form>
