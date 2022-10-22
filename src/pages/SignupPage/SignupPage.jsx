@@ -1,6 +1,7 @@
 import "./SignupPage.css";
-import { useState } from "react";
+import { useState, useContext } from "react"; // acrescentei o UseConntext
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/auth.context"; // ---> Add the AuthContext
 import authService from "../../services/auth.service";
 
 function SignupPage() {
@@ -11,6 +12,8 @@ function SignupPage() {
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
+
+  const { storeToken, authenticateUser } = useContext(AuthContext); //<----Add the AuthContext
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
@@ -37,8 +40,15 @@ function SignupPage() {
     authService
       .signup(requestBody)
       .then((response) => {
+        // If the POST request is successful store the authentication token,
+        // after the token is stored authenticate the user
+        // and at last navigate to the home page
+        storeToken(response.data.authToken);
+        authenticateUser();
+        navigate("/");
+
         // If the POST request is successful redirect to the login page
-        navigate("/login");
+        // navigate("/login");
       })
       .catch((error) => {
         // If the request resolves with an error, set the error message in the state
