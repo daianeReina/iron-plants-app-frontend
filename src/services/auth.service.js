@@ -35,6 +35,10 @@ class AuthService {
     return this.api.post("/profile/edit", requestBody);
   };
 
+  profileEditPassword = (requestBody) => {
+    return this.api.post("/profile/edit-password", requestBody);
+  };
+
   verify = () => {
     return this.api.get("/auth/verify");
     // same as

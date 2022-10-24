@@ -6,6 +6,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import ProfilePageEdit from "./pages/ProfilePageEdit/ProfilePageEdit";
+import ProfilePageEditPassword from "./pages/ProfilePageEditPassword/ProfilePageEditPassword";
 
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
@@ -33,6 +34,15 @@ function App() {
           element={
             <IsPrivate>
               <ProfilePageEdit />
+            </IsPrivate>
+          }
+        />
+
+        <Route
+          path="/profile/edit-password"
+          element={
+            <IsPrivate>
+              <ProfilePageEditPassword />
             </IsPrivate>
           }
         />

@@ -1,13 +1,13 @@
-import "./ProfilePageEdit.css";
+import "./ProfilePageEditPassword.css";
 import React, { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 import { useNavigate } from "react-router-dom";
 import authService from "../../services/auth.service";
-import { Link } from "react-router-dom";
 
-function ProfilePageEdit() {
+function ProfilePageEditPassword() {
   const [errorMessage, setErrorMessage] = useState(undefined);
+
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider's `value` prop
   const { isLoggedIn, user } = useContext(AuthContext);
@@ -30,10 +30,10 @@ function ProfilePageEdit() {
     const requestBody = userData;
     // console.log(userData);
 
-    //console.log("RequestBody:", requestBody);
+    console.log("RequestBody:", requestBody);
 
     authService
-      .profileEdit(requestBody)
+      .profileEditPassword(requestBody)
       .then((response) => {
         console.log("Data is received");
         storeToken(response.data.authToken);
@@ -51,32 +51,35 @@ function ProfilePageEdit() {
     <div>
       {isLoggedIn && (
         <>
-          <h1> Edit you settings</h1>
+          <h1>Edit You Password</h1>
           <form onSubmit={handleSubmit}>
             <label>
-              Name:
+              Current Password:
+              <input type="password" name="password" onChange={handleChange} />
+            </label>
+            <br />
+            <label>
+              New Password:
               <input
-                type="text"
-                name="name"
+                type="password"
+                name="newPassword"
                 onChange={handleChange}
-                value={userData.name}
               />
             </label>
             <br />
             <label>
-              Email:
+              Confirm New Password:
               <input
-                type="email"
-                name="email"
+                type="password"
+                name="confirmNewPassword"
                 onChange={handleChange}
-                value={userData.email}
               />
             </label>
             <br />
-            <Link to="/profile/edit-password"> Change your Password</Link>
-            <br />
+
             <button type="submit">Change</button>
           </form>
+
           {errorMessage && <p className="error-message">{errorMessage}</p>}
         </>
       )}
@@ -84,4 +87,4 @@ function ProfilePageEdit() {
   );
 }
 
-export default ProfilePageEdit;
+export default ProfilePageEditPassword;
