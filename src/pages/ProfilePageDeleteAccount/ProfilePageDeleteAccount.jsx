@@ -1,23 +1,22 @@
-import "./ProfilePageEdit.css";
+import "./ProfilePageDeleteAccount.css";
 import React, { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 import { useNavigate } from "react-router-dom";
 import authService from "../../services/auth.service";
-import { Link } from "react-router-dom";
 
-function ProfilePageEdit() {
+function ProfilePageDeleteAccount() {
   const [errorMessage, setErrorMessage] = useState(undefined);
+
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider's `value` prop
-  const { isLoggedIn, user } = useContext(AuthContext);
+  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   const [userData, setUserData] = useState(user);
 
-  //   console.log(userData)
   const navigate = useNavigate();
 
-  const { storeToken, authenticateUser } = useContext(AuthContext);
+  const { storeToken } = useContext(AuthContext);
 
   function handleChange(e) {
     const { value, name } = e.target;
@@ -33,12 +32,12 @@ function ProfilePageEdit() {
     //console.log("RequestBody:", requestBody);
 
     authService
-      .profileEdit(requestBody)
+      .profileDelete(requestBody)
       .then((response) => {
         console.log("Data is received");
         storeToken(response.data.authToken);
-        authenticateUser();
-        navigate("/profile");
+        logOutUser();
+        navigate("/");
       })
       .catch((error) => {
         // If the request resolves with an error, set the error message in the state
@@ -46,38 +45,23 @@ function ProfilePageEdit() {
         setErrorMessage(errorDescription);
       });
   }
-
   return (
     <div>
       {isLoggedIn && (
         <>
-          <h1> Edit you settings</h1>
+          <h1>Delete your Profile</h1>
+          <p>
+            ⚠ By deleting your account, you will no longer be able to sign in,
+            your activity will be removed from IronPlants!
+          </p>
+          <p>Please, provide your password to confirm your deletion. </p>
           <form onSubmit={handleSubmit}>
             <label>
-              Name:
-              <input
-                type="text"
-                name="name"
-                onChange={handleChange}
-                value={userData.name}
-              />
+              Password:
+              <input type="password" name="password" onChange={handleChange} />
             </label>
             <br />
-            <label>
-              Email:
-              <input
-                type="email"
-                name="email"
-                onChange={handleChange}
-                value={userData.email}
-              />
-            </label>
-            <br />
-            <Link to="/profile/edit-password"> Change your Password</Link>
-            <br />
-            <Link to="/profile/delete-account"> Delete your Account</Link>
-            <br />
-            <button type="submit">Change</button>
+            <button type="submit">Delete my account</button>
           </form>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
         </>
@@ -86,4 +70,4 @@ function ProfilePageEdit() {
   );
 }
 
-export default ProfilePageEdit;
+export default ProfilePageDeleteAccount;

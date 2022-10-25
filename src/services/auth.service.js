@@ -39,6 +39,10 @@ class AuthService {
     return this.api.post("/profile/edit-password", requestBody);
   };
 
+  profileDelete = (requestBody) => {
+    return this.api.post("/profile/delete-account", requestBody);
+  };
+
   verify = () => {
     return this.api.get("/auth/verify");
     // same as
