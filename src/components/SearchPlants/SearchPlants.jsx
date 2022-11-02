@@ -1,17 +1,16 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./SearchPlants.css";
+import CardPlant from "../CardPlant/CardPlant";
+import apiClient from "../../services/api-client";
 
 function SearchPlants() {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    axios
-      .get(
-        `${process.env.REACT_APP_SERVER_URL}/plants` ||
-          "http://localhost:5006/plants"
-      )
+    //axios
+    apiClient
+      .get("/plants")
 
       .then((result) => {
         setData(result.data);
@@ -43,16 +42,7 @@ function SearchPlants() {
                 return plant.latin.toLowerCase().includes(search.toLowerCase());
               })
               .map((plant) => {
-                return (
-                  <div key={plant.id}>
-                    <img
-                      src="https://media.istockphoto.com/photos/young-plant-growing-in-sunlight-picture-id658291850?k=20&m=658291850&s=612x612&w=0&h=RLzbYzoN8q8UoKDUd3eebu2hmrhCEYIE48C41x419Fs="
-                      alt="plant"
-                    />
-                    <h2>{plant.latin} </h2>
-                    <h3>Family: {plant.family}</h3>
-                  </div>
-                );
+                return <CardPlant key={plant.id} plant={plant} />;
               })}
           </div>
         )}

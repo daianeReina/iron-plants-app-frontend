@@ -9,6 +9,8 @@ import ProfilePageEdit from "./pages/ProfilePageEdit/ProfilePageEdit";
 import ProfilePageEditPassword from "./pages/ProfilePageEditPassword/ProfilePageEditPassword";
 import ProfilePageDeleteAccount from "./pages/ProfilePageDeleteAccount/ProfilePageDeleteAccount";
 
+import PlantsPage from "./pages/PlantsPage/PlantsPage";
+
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
@@ -70,6 +72,15 @@ function App() {
           element={
             <IsAnon>
               <LoginPage />
+            </IsAnon>
+          }
+        />
+
+        <Route
+          path="/plants"
+          element={
+            <IsAnon>
+              <PlantsPage />
             </IsAnon>
           }
         />
