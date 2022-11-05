@@ -48,8 +48,12 @@ class AuthService {
   };
 
   addPlant = (requestBody) => {
-    console.log("Ola");
+    // console.log("Ola");
     return this.api.post("/plant-list/add-plant", requestBody);
+  };
+
+  getAllPlantsByUser = () => {
+    return this.api.get("/plant-list");
   };
 
   verify = () => {
