@@ -82,7 +82,7 @@ function DetailsPlant({ plant }) {
       </p>
       <p>
         <b>Insects: </b>
-        {insects.join(", ")}
+        {typeof insects === "string" ? insects : insects.join(", ")}
       </p>
       <p>
         <b>Diseases: </b>
