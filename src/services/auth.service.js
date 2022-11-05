@@ -47,6 +47,10 @@ class AuthService {
     return this.api.post("/profile/delete-account", requestBody);
   };
 
+  // addPlant = (requestBody) => {
+  //   return this.api.post("/plant-list/add-plant", requestBody);
+  // };
+
   verify = () => {
     return this.api.get("/auth/verify");
     // same as

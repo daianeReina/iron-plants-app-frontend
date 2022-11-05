@@ -2,24 +2,34 @@ import React, { useEffect, useState } from "react";
 import "./SearchPlants.css";
 import CardPlant from "../CardPlant/CardPlant";
 import apiClient from "../../services/api-client";
+import Loading from "../Loading/Loading";
 
 function SearchPlants() {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(undefined);
 
   useEffect(() => {
-    //axios
     apiClient
       .get("/plants")
-
       .then((result) => {
         setData(result.data);
         // console.log(result.data);
       })
-      .catch((err) => {
-        console.log("ERROR: ", err);
+      .catch((error) => {
+        console.log("ERROR: ", error);
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
@@ -46,6 +56,7 @@ function SearchPlants() {
               })}
           </div>
         )}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
     </>
   );

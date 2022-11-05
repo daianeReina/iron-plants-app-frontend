@@ -10,6 +10,8 @@ import ProfilePageEditPassword from "./pages/ProfilePageEditPassword/ProfilePage
 import ProfilePageDeleteAccount from "./pages/ProfilePageDeleteAccount/ProfilePageDeleteAccount";
 
 import PlantsPage from "./pages/PlantsPage/PlantsPage";
+import SinglePlantPage from "./pages/SinglePlantPage/SinglePlantPage";
+import MyGardenPage from "./pages/MyGardenPage/MyGardenPage";
 
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
@@ -76,12 +78,22 @@ function App() {
           }
         />
 
+        <Route path="/plants" element={<PlantsPage />} />
         <Route
-          path="/plants"
+          path="/plants/:latin"
           element={
-            <IsAnon>
-              <PlantsPage />
-            </IsAnon>
+            <IsPrivate>
+              <SinglePlantPage />
+            </IsPrivate>
+          }
+        />
+
+        <Route
+          path="/my-garden"
+          element={
+            <IsPrivate>
+              <MyGardenPage />
+            </IsPrivate>
           }
         />
       </Routes>
