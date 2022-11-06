@@ -41,7 +41,7 @@ function SearchPlants() {
         <input
           className="search"
           type="text"
-          placeholder="Search by common name or latin name"
+          placeholder="Search by latin name"
           onChange={handleSearch}
           value={search}
         />

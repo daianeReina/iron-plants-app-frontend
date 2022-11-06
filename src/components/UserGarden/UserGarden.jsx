@@ -5,7 +5,7 @@ import apiClient from "../../services/api-client";
 import CardPlantGarden from "../CardPlantGarden/CardPlantGarden";
 import Loading from "../Loading/Loading";
 
-function Card({ userPlant }) {
+function UserGarden({ userPlant }) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(undefined);
@@ -39,12 +39,13 @@ function Card({ userPlant }) {
           return plant.latin.includes(latin);
         })
         .map((plant) => {
-          return <CardPlantGarden plant={plant} />;
-        })}
+          return <CardPlantGarden key={plant.id} plant={plant} />;
+        })
+        .slice(0, 1)}
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </>
   );
 }
 
-export default Card;
+export default UserGarden;

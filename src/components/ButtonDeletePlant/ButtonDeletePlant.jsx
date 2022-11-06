@@ -1,22 +1,17 @@
-import "./ButtonAddPlant.css";
-
 import React, { useState } from "react";
-
-import authService from "../../services/auth.service";
 import { useNavigate } from "react-router-dom";
+import authService from "../../services/auth.service";
 
-function ButtonAddPlant({ plant }) {
-  //   console.log({ plant });
+function ButtonDeletePlant({ plant }) {
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
 
   const handleOnClick = () => {
-    // console.log(plant);
+    console.log("Plant to delete:", plant);
 
-    // console.log("Working");
     authService
-      .addPlant(plant)
+      .deletePlant(plant)
       .then((response) => {
         console.log("Data Plant🌿is received");
         console.log({ response });
@@ -31,10 +26,10 @@ function ButtonAddPlant({ plant }) {
 
   return (
     <div>
-      <button onClick={handleOnClick}>Add to My Garden</button>
+      <button onClick={handleOnClick}>Delete Plant</button>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
   );
 }
 
-export default ButtonAddPlant;
+export default ButtonDeletePlant;
