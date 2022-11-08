@@ -1,3 +1,19 @@
-.LoginPage{
-    width: 100%;
+
+.row{
+    background-color: white;
+    border-radius: 30px;
+    
+}
+
+.imgLogin{
+    width: 1200px;
+}
+
+img{
+    border-radius: 30px;
+    border-top-left-radius:30px ;
+}
+
+.btn{
+    margin: 0;
 }
