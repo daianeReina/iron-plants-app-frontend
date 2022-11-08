@@ -28,7 +28,7 @@ function ButtonAddPlant({ plant }) {
         const errorDescription = error.response.data.message;
         console.log("oh oh");
         console.log(error.response.data);
-        //  setErrorMessage(errorDescription);
+        setErrorMessage(errorDescription);
       });
   };
 

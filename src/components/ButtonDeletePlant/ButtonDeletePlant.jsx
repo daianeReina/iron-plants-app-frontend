@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import authService from "../../services/auth.service";
 
 function ButtonDeletePlant({ plant, getAllPlants }) {
   const [errorMessage, setErrorMessage] = useState(undefined);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleOnClick = () => {
     console.log("Plant to delete:", plant);
