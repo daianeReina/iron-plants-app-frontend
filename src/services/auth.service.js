@@ -10,12 +10,9 @@ class AuthService {
     this.api.interceptors.request.use((config) => {
       // Retrieve the JWT token from the local storage
       const storedToken = localStorage.getItem("authToken");
-      console.log({ storedToken });
       if (storedToken) {
         config.headers = { Authorization: `Bearer ${storedToken}` };
       }
-
-      console.log(config);
 
       return config;
     });

@@ -1,9 +1,9 @@
 import "./MyGardenPage.css";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import authService from "../../services/auth.service";
 import Loading from "../../components/Loading/Loading";
-import UserGarden from "../../components/UserGarden/UserGarden";
+import CardPlantGarden from "../../components/CardPlantGarden/CardPlantGarden";
 
 function MyGardenPage() {
   const [plants, setPlants] = useState([]);
@@ -11,26 +11,32 @@ function MyGardenPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(undefined);
 
-  useEffect(() => {
-    authService
+  const getAllPlants = useCallback(() => {
+    return authService
       .getAllPlantsByUser()
       .then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
         setPlants(response.data);
+        return response.data;
       })
       .catch((error) => {
         // If the request resolves with an error, set the error message in the state
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
-      })
-      .finally(() => {
-        setIsLoading(false);
       });
   }, []);
+
+  useEffect(() => {
+    getAllPlants().then(() => {
+      setIsLoading(false);
+    });
+  }, [getAllPlants]);
 
   if (isLoading) {
     return <Loading />;
   }
+
+  console.log({ plants });
 
   return (
     <div>
@@ -39,7 +45,7 @@ function MyGardenPage() {
         {plants.map((plant) => {
           return (
             <div key={plant._id}>
-              <UserGarden userPlant={plant} />
+              <CardPlantGarden plant={plant} getAllPlants={getAllPlants} />
             </div>
           );
         })}

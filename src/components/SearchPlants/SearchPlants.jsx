@@ -41,27 +41,24 @@ function SearchPlants() {
   return (
     <>
       <div className="container">
-        <form>
-          <input
-            className="form-control me-2"
-            type="search"
-            placeholder="Search by latin name"
-            onChange={handleSearch}
-            value={search}
-            aria-label="Search"
-          />
-          <div>
-            {/* .filter((plant) => {
-                  return (
-                    !search ||
-                    plant.latin.toLowerCase().includes(search.toLowerCase())
-                  );
-                }) */}
-            {data.map((plant) => {
-              return <CardPlant key={plant.id} plant={plant} />;
-            })}
-          </div>
-        </form>
+        <input
+          className="form-control me-2"
+          type="search"
+          placeholder="Search by latin name"
+          onChange={handleSearch}
+          value={search}
+          aria-label="Search"
+        />
+        <div>
+          {search &&
+            data
+              .filter((plant) => {
+                return plant.latin.toLowerCase().includes(search.toLowerCase());
+              })
+              .map((plant) => {
+                return <CardPlant key={plant.id} plant={plant} />;
+              })}
+        </div>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
     </>
