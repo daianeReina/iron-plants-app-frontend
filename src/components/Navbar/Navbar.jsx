@@ -34,7 +34,7 @@ function Navbar() {
           </Link>
 
           <div className="logoutWelcomeUser">
-            <h4 href="#" className="nav-link px-2 link-success">
+            <h4 href="#" className="px-2 link-success">
               Hello, <span>{user && user.name}</span>!
             </h4>
             <Link

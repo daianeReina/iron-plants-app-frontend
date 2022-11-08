@@ -1,7 +1,9 @@
 .logoutWelcomeUser{
     display: flex;
+    align-items: center
 }
 
 .imgLogo{
     width: 150px;
 }
+
