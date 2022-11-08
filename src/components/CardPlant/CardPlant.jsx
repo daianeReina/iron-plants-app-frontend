@@ -10,8 +10,9 @@ function CardPlant({ plant }) {
   const slug = slugify(plant.latin).toLowerCase();
 
   return (
-    <div>
+    <div className="card" style={{ width: "18rem" }}>
       <img
+        className="card-img-top"
         src="https://media.istockphoto.com/photos/young-plant-growing-in-sunlight-picture-id658291850?k=20&m=658291850&s=612x612&w=0&h=RLzbYzoN8q8UoKDUd3eebu2hmrhCEYIE48C41x419Fs="
         alt="plant"
       />

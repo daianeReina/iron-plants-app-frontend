@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import slugify from "slugify";
 import ButtonDeletePlant from "../ButtonDeletePlant/ButtonDeletePlant";
 
-function CardPlantGarden({ plant }) {
+function CardPlantGarden({ plant, getAllPlants }) {
+  console.log("ui", plant);
   const navigate = useNavigate();
 
   const slug = slugify(plant.latin).toLowerCase();
@@ -26,7 +27,7 @@ function CardPlantGarden({ plant }) {
       >
         More Info
       </button>
-      <ButtonDeletePlant plant={plant} />
+      <ButtonDeletePlant plant={plant} getAllPlants={getAllPlants} />
     </div>
   );
 }

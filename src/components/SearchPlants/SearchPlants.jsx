@@ -35,27 +35,30 @@ function SearchPlants() {
     setSearch(event.target.value);
   };
 
+  console.log(data);
+  console.log({ search, isHere: !search });
+
   return (
     <>
-      <div>
+      <div className="container">
         <input
-          className="search"
-          type="text"
+          className="form-control me-2"
+          type="search"
           placeholder="Search by latin name"
           onChange={handleSearch}
           value={search}
+          aria-label="Search"
         />
-        {search.length !== 0 && (
-          <div>
-            {data
+        <div>
+          {search &&
+            data
               .filter((plant) => {
                 return plant.latin.toLowerCase().includes(search.toLowerCase());
               })
               .map((plant) => {
                 return <CardPlant key={plant.id} plant={plant} />;
               })}
-          </div>
-        )}
+        </div>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
     </>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../../services/auth.service";
 
-function ButtonDeletePlant({ plant }) {
+function ButtonDeletePlant({ plant, getAllPlants }) {
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
@@ -14,11 +14,13 @@ function ButtonDeletePlant({ plant }) {
       .then((response) => {
         console.log("Data Plant🌿is received");
         console.log({ response });
-
-        navigate("/my-garden");
+        getAllPlants().then((r) => console.log(r));
+        // setData(response).data);
+        //  navigate("/my-garden");
       })
       .catch((error) => {
-        const errorDescription = error.response.data.message;
+        const errorDescription = error;
+        console.log(errorDescription);
         setErrorMessage(errorDescription);
       });
   };
@@ -26,7 +28,9 @@ function ButtonDeletePlant({ plant }) {
   return (
     <div>
       <button onClick={handleOnClick}>Delete Plant</button>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {errorMessage && (
+        <p className="error-message">{JSON.stringify(errorMessage)}</p>
+      )}
     </div>
   );
 }

@@ -10,7 +10,6 @@ class AuthService {
     this.api.interceptors.request.use((config) => {
       // Retrieve the JWT token from the local storage
       const storedToken = localStorage.getItem("authToken");
-      console.log({ storedToken });
       if (storedToken) {
         config.headers = { Authorization: `Bearer ${storedToken}` };
       }
@@ -56,8 +55,12 @@ class AuthService {
     return this.api.get("/plant-list");
   };
 
-  deletePlant = (requestBody) => {
-    return this.api.post("/plant-list/delete-plant", requestBody);
+  // deletePlant = (requestBody) => {
+  //   return this.api.post("/plant-list/delete-plant", requestBody);
+  // };
+
+  deletePlant = (data) => {
+    return this.api.post("/plant-list/delete-plant", data);
   };
 
   verify = () => {
