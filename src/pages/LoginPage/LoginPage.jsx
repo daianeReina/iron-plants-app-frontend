@@ -48,8 +48,8 @@ function LoginPage() {
     <>
       <section className="Form my-4 mx-5">
         <div className="container">
-          <div className="row ">
-            <div className="col">
+          <div className="row g-0">
+            <div className="col align-self-center">
               <img
                 src="/plant-horizontal-2.png"
                 className="imgLogin img-fluid"
@@ -93,8 +93,13 @@ function LoginPage() {
                     <p className="error-message">{errorMessage}</p>
                   )}
                   <p className="text-start my-3">
-                    Don't have an account?
-                    <Link to={"/signup"}>Register Here</Link>
+                    Don't have an account?<span> </span>
+                    <Link
+                      className="text-decoration-none text-success"
+                      to={"/signup"}
+                    >
+                      Register Here
+                    </Link>
                   </p>
                 </div>
               </form>

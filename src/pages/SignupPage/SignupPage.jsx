@@ -58,44 +58,136 @@ function SignupPage() {
   };
 
   return (
-    <div className="SignupPage">
-      <h1>Sign Up</h1>
+    <>
+      <section className="Form my-4 mx-5">
+        <div className="container">
+          <div className="row g-0">
+            <div className="col px-5 pt-5">
+              <h1 className="text-start font-weith-bold py-3">Sign Up</h1>
+              <h4 className="text-start">
+                And Become A Total Plant & Gardening Expert!
+              </h4>
+              <form onSubmit={handleSignupSubmit}>
+                <div className="form-row">
+                  <div className="col">
+                    <input
+                      type="text"
+                      className="form-control my-3"
+                      placeholder="Your name"
+                      name="name"
+                      value={name}
+                      onChange={handleName}
+                    />
+                  </div>
+                  <div className="col">
+                    <input
+                      type="email"
+                      className="form-control my-3"
+                      placeholder="Your email"
+                      name="email"
+                      value={email}
+                      onChange={handleEmail}
+                    />
+                  </div>
+                  <div className="col">
+                    <input
+                      type="password"
+                      className="form-control my-3 "
+                      placeholder="Your password"
+                      name="password"
+                      value={password}
+                      onChange={handlePassword}
+                    />
+                  </div>
+                  <div className="col">
+                    <input
+                      type="password"
+                      className="form-control my-3 "
+                      placeholder="Confirm Your password"
+                      name="confirmPassword"
+                      value={confirmPassword}
+                      onChange={handleConfirmPassword}
+                    />
+                  </div>
+                  {errorMessage && (
+                    <>
+                      <p
+                        className="alert alert-danger error-message"
+                        role="alert"
+                      >
+                        {errorMessage}
+                      </p>
+                    </>
+                  )}
+                  <div className="col">
+                    <button
+                      className="w-100 btn btn-outline-success me-2"
+                      type="submit"
+                    >
+                      Sign Up
+                    </button>
+                  </div>
+                  <p className="text-start my-3">
+                    Already have account?<span> </span>
+                    <Link
+                      className="text-decoration-none text-success"
+                      to={"/login"}
+                    >
+                      Login
+                    </Link>
+                  </p>
+                </div>
+              </form>
+            </div>
+            <div className="col align-self-center">
+              <img
+                src="/plant-horizontal-1.png"
+                className="imgSignUp img-fluid"
+                alt="loginImage"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+    // <div className="SignupPage">
+    //   <h1>Sign Up</h1>
 
-      <form onSubmit={handleSignupSubmit}>
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
-        <br />
+    //   <form onSubmit={handleSignupSubmit}>
+    //     <label>Name:</label>
+    //     <input type="text" name="name" value={name} onChange={handleName} />
+    //     <br />
 
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
-        <br />
+    //     <label>Email:</label>
+    //     <input type="email" name="email" value={email} onChange={handleEmail} />
+    //     <br />
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
-        <br />
+    //     <label>Password:</label>
+    //     <input
+    //       type="password"
+    //       name="password"
+    //       value={password}
+    //       onChange={handlePassword}
+    //     />
+    //     <br />
 
-        <label> Confirm Password:</label>
-        <input
-          type="password"
-          name="confirmPassword"
-          value={confirmPassword}
-          onChange={handleConfirmPassword}
-        />
-        <br />
+    //     <label> Confirm Password:</label>
+    //     <input
+    //       type="password"
+    //       name="confirmPassword"
+    //       value={confirmPassword}
+    //       onChange={handleConfirmPassword}
+    //     />
+    //     <br />
 
-        <button type="submit">Sign Up</button>
-      </form>
+    //     <button type="submit">Sign Up</button>
+    //   </form>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+    //   {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
-    </div>
+    //   <p>Already have account?</p>
+    //   <Link to={"/login"}> Login</Link>
+    // </div>
   );
 }
 
