@@ -1,6 +1,6 @@
 import "./UserGarden.css";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import apiClient from "../../services/api-client";
 import CardPlantGarden from "../CardPlantGarden/CardPlantGarden";
 import Loading from "../Loading/Loading";
@@ -12,7 +12,7 @@ function UserGarden({ userPlant }) {
 
   const { latin } = userPlant;
 
-  useEffect(() => {
+  const getAllPlants = useCallback(() => {
     apiClient
       .get("/plants")
       .then((result) => {
@@ -29,6 +29,10 @@ function UserGarden({ userPlant }) {
       });
   }, []);
 
+  useEffect(() => {
+    getAllPlants();
+  }, [getAllPlants]);
+
   if (isLoading) {
     return <Loading />;
   }
@@ -39,7 +43,14 @@ function UserGarden({ userPlant }) {
           return plant.latin.includes(latin);
         })
         .map((plant) => {
-          return <CardPlantGarden key={plant.id} plant={plant} />;
+          return (
+            <CardPlantGarden
+              key={plant.id}
+              plant={plant}
+              setData={setData}
+              getAllPlants={getAllPlants}
+            />
+          );
         })
         .slice(0, 1)}
 

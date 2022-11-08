@@ -15,6 +15,8 @@ class AuthService {
         config.headers = { Authorization: `Bearer ${storedToken}` };
       }
 
+      console.log(config);
+
       return config;
     });
   }
@@ -56,8 +58,12 @@ class AuthService {
     return this.api.get("/plant-list");
   };
 
-  deletePlant = (requestBody) => {
-    return this.api.post("/plant-list/delete-plant", requestBody);
+  // deletePlant = (requestBody) => {
+  //   return this.api.post("/plant-list/delete-plant", requestBody);
+  // };
+
+  deletePlant = (data) => {
+    return this.api.post("/plant-list/delete-plant", data);
   };
 
   verify = () => {

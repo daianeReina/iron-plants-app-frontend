@@ -25,6 +25,10 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
 
+        {/* 
+
+      
+
         <Route
           path="/profile"
           element={
@@ -86,7 +90,7 @@ function App() {
               <SinglePlantPage />
             </IsPrivate>
           }
-        />
+        /> */}
 
         <Route
           path="/my-garden"

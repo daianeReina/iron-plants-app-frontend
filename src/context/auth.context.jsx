@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import apiClient from "../services/api-client";
 import authService from "../services/auth.service";
 
 const AuthContext = React.createContext();
@@ -28,8 +29,8 @@ function AuthProviderWrapper(props) {
         */
 
       // Or using a service
-      authService
-        .verify()
+      apiClient
+        .get("/auth/verify")
         .then((response) => {
           // If the server verifies that JWT token is valid  ✅
           const user = response.data;

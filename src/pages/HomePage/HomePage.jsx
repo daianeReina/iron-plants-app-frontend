@@ -3,13 +3,21 @@ import SearchPlants from "../../components/SearchPlants/SearchPlants";
 import { AuthContext } from "../../context/auth.context";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import Loading from "../../components/Loading/Loading";
 
 function HomePage() {
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, isLoading } = useContext(AuthContext);
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div>
       {isLoggedIn && (
         <>
+          <div className="container">
+            <img src="/img search.png" className="img-fluid" alt="imageplant" />
+          </div>
           <SearchPlants />
         </>
       )}
