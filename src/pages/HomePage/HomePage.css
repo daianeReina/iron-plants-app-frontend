@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    align-items: center;
+}
+
+
+.imgPlant1 {
+    width: 315px;
+    height: 391px;
+    margin: 16px 0px;
+    
+}
+
+.imgPlant2 {
+    width: 315px;
+    height: 206px;
+    margin: 16px 0px;
+    
+}
+
+.imagesAllPlants{
+    display: flex;
+    
+    width: 1400px;
+    height: 500px;
+    
+    
+}
+
+.divImg{
+    margin: 8px;
+}
+
+.btn{
+    margin: 20px;
+}

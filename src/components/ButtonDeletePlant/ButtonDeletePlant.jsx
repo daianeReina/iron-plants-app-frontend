@@ -9,7 +9,6 @@ function ButtonDeletePlant({ plant }) {
 
   const handleOnClick = () => {
     console.log("Plant to delete:", plant);
-
     authService
       .deletePlant(plant)
       .then((response) => {

@@ -45,22 +45,36 @@ function LoginPage() {
   };
 
   return (
-    <div className="LoginPage">
-      <h1>Login</h1>
+    <div className="LoginPage container">
+      <h1 className="h3 mb-3 fw-normal">Please Sign In</h1>
 
       <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+        <div className="form-floating">
+          <input
+            type="email"
+            className="form-control"
+            placeholder="name@example.com"
+            name="email"
+            value={email}
+            onChange={handleEmail}
+          />
+          <label for="floatingInput">Email Address</label>
+        </div>
+        <div className="form-floating">
+          <input
+            type="password"
+            className="form-control"
+            placeholder="password"
+            name="password"
+            value={password}
+            onChange={handlePassword}
+          />
+          <label>Password:</label>
+        </div>
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
-
-        <button type="submit">Login</button>
+        <button className="w-100 btn btn-lg btn-success" type="submit">
+          Login
+        </button>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 

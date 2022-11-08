@@ -5,26 +5,59 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 function HomePage() {
-  const { isLoggedIn, user } = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
   return (
     <div>
       {isLoggedIn && (
         <>
-          <h1>
-            Hello, <span>{user && user.name}!</span>
-          </h1>
           <SearchPlants />
         </>
       )}
 
       {!isLoggedIn && (
         <>
-          <h1>Welcome to Iron Plants!</h1>
-          <p> Become A Total Plant & Gardening Expert!</p>
-          <p>Search for House Plants and create your own garden</p>
-          <Link to="/signup">
-            <button>Click Here to Sign Up</button>
-          </Link>
+          <div className="container ">
+            <div className="row align-items-start">
+              <h1>Welcome to Iron Plants!</h1>
+              <h4 className="text-muted">
+                Become A Total Plant & Gardening Expert!
+              </h4>
+              <h4 className="text-muted">
+                Search for House Plants and create your own garden
+              </h4>
+              <Link to="/signup">
+                <button type="button" className="btn btn-success">
+                  Click Here to Sign Up
+                </button>
+              </Link>
+            </div>
+            <div className="imagesAllPlants img-fluid ">
+              <div className="divImg">
+                <img
+                  src="/plants-vertical-1.png"
+                  className="imgPlant1 img-fluid rounded"
+                  alt="plant-house1"
+                />
+                <img
+                  src="/plant-horizontal-1.png"
+                  className="imgPlant2 img-fluid rounded"
+                  alt="plant-house1"
+                />
+              </div>
+              <div className="divImg">
+                <img
+                  src="/plant-horizontal-2.png"
+                  className="imgPlant2 img-fluid rounded"
+                  alt="plant-house2"
+                />
+                <img
+                  src="/plants-vertical-2.png"
+                  className="imgPlant1 img-fluid rounded"
+                  alt="plant-house2"
+                />
+              </div>
+            </div>
+          </div>
         </>
       )}
     </div>
