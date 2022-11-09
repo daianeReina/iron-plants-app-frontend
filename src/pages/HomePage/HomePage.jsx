@@ -15,10 +15,19 @@ function HomePage() {
     <div>
       {isLoggedIn && (
         <>
-          <div className="container">
-            <img src="/img search.png" className="img-fluid" alt="imageplant" />
+          <div className="container d-flex flex-column bd-highlight mb-3">
+            <div className="row">
+              <div className="col ">
+                <img
+                  src="/img-search-2.png"
+                  className="imgHome1 img-fluid "
+                  alt="imageplant"
+                />
+                <h1 className="mb-3">Search for a plant by Latin Name</h1>
+              </div>
+            </div>
+            <SearchPlants />
           </div>
-          <SearchPlants />
         </>
       )}
 

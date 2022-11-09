@@ -39,7 +39,7 @@ function SearchPlants() {
   console.log({ search, isHere: !search });
 
   return (
-    <>
+    <div className="container d-flex flex-column">
       <div className="container">
         <input
           className="form-control me-2"
@@ -49,7 +49,11 @@ function SearchPlants() {
           value={search}
           aria-label="Search"
         />
-        <div>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+      </div>
+      <div className="container g-3">
+        <div className="row g-3 mt-3">
+          {/* <div className="col-12 col-md-6 col-lg-4"> */}
           {search &&
             data
               .filter((plant) => {
@@ -59,9 +63,9 @@ function SearchPlants() {
                 return <CardPlant key={plant.id} plant={plant} />;
               })}
         </div>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
-    </>
+    </div>
+    // </div>
   );
 }
 
