@@ -10,24 +10,33 @@ function CardPlant({ plant }) {
   const slug = slugify(plant.latin).toLowerCase();
 
   return (
-    <div className="card" style={{ width: "18rem" }}>
-      <img
-        className="card-img-top"
-        src="https://media.istockphoto.com/photos/young-plant-growing-in-sunlight-picture-id658291850?k=20&m=658291850&s=612x612&w=0&h=RLzbYzoN8q8UoKDUd3eebu2hmrhCEYIE48C41x419Fs="
-        alt="plant"
-      />
-      <h2>{plant.latin}</h2>
-      <h3>Family: {plant.family}</h3>
-
-      <button
-        onClick={() => {
-          navigate(`/plants/${slug}`);
-        }}
-      >
-        More Info
-      </button>
-
-      <ButtonAddPlant plant={plant} />
+    <div className="container g-3">
+      <div className="row g-3 mt-3">
+        <div className="col-12 col-md-6 col-lg-4">
+          <div className="card" style={{ width: "18rem" }}>
+            <img
+              className="card-img-top"
+              src="https://media.istockphoto.com/photos/young-plant-growing-in-sunlight-picture-id658291850?k=20&m=658291850&s=612x612&w=0&h=RLzbYzoN8q8UoKDUd3eebu2hmrhCEYIE48C41x419Fs="
+              alt="plant"
+            />
+            <div className="card-body">
+              <h4 className="card-title">{plant.latin}</h4>
+              <p className="card-text">Family: {plant.family}</p>
+              <div className="d-flex align-items-center justify-content-evenly">
+                <button
+                  className="btn btn-success m-2 "
+                  onClick={() => {
+                    navigate(`/plants/${slug}`);
+                  }}
+                >
+                  More Info
+                </button>
+                <ButtonAddPlant plant={plant} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -34,7 +34,9 @@ function ButtonAddPlant({ plant }) {
 
   return (
     <div>
-      <button onClick={handleOnClick}>Add to My Garden</button>
+      <button className="btn btn-success " onClick={handleOnClick}>
+        Add Plant
+      </button>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
   );

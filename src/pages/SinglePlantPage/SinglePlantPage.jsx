@@ -55,7 +55,7 @@ function SinglePlantPage() {
             <div key={plant.id}>
               <>
                 <DetailsPlant key={plant.id} plant={plant} />
-                <ButtonAddPlant />
+                <ButtonAddPlant plant={plant} />
               </>
             </div>
           );
