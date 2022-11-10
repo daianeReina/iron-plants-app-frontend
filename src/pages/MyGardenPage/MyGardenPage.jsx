@@ -39,18 +39,21 @@ function MyGardenPage() {
   console.log({ plants });
 
   return (
-    <div>
-      <h1> My garden</h1>
-      <>
+    <div className="container d-flex flex-column bd-highlight mb-3">
+      <div className="col ">
+        <h1 className="text-success mb-3 "> My garden</h1>
+      </div>
+      <div className="row">
         {plants.map((plant) => {
           return (
-            <div key={plant._id}>
+            <div className="col d-flex" key={plant._id}>
               <CardPlantGarden plant={plant} getAllPlants={getAllPlants} />
             </div>
           );
         })}
+
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-      </>
+      </div>
     </div>
   );
 }

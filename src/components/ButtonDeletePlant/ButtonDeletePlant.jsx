@@ -27,9 +27,13 @@ function ButtonDeletePlant({ plant, getAllPlants }) {
 
   return (
     <div>
-      <button onClick={handleOnClick}>Delete Plant</button>
+      <button className="btn btn-success" onClick={handleOnClick}>
+        Delete Plant
+      </button>
       {errorMessage && (
-        <p className="error-message">{JSON.stringify(errorMessage)}</p>
+        <p className="alert alert-danger error-message" role="alert">
+          {JSON.stringify(errorMessage)}
+        </p>
       )}
     </div>
   );

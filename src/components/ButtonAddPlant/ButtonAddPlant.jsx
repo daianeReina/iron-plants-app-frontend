@@ -34,10 +34,14 @@ function ButtonAddPlant({ plant }) {
 
   return (
     <div>
-      <button className="btn btn-success " onClick={handleOnClick}>
+      <button className="btn btn-success" onClick={handleOnClick}>
         Add Plant
       </button>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {errorMessage && (
+        <p className="alert alert-danger error-message" role="alert">
+          {errorMessage}
+        </p>
+      )}
     </div>
   );
 }

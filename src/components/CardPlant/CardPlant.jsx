@@ -20,8 +20,18 @@ function CardPlant({ plant }) {
           alt="plant"
         />
         <div className="card-body">
-          <h4 className="card-title">{plant.latin}</h4>
-          <p className="card-text">Family: {plant.family}</p>
+          <h4 className="card-title text-success">{plant.latin}</h4>
+          <p className="card-text text-secondary my-1">
+            <em>Common Name</em>:
+          </p>
+          <p className="card-text text-secondary mt-0">
+            <em>
+              {typeof plant.common === "string"
+                ? plant.common
+                : plant.common.join(", ")}
+            </em>
+          </p>
+
           <div className="d-flex align-items-center justify-content-evenly">
             <button
               className="btn btn-success m-2 "

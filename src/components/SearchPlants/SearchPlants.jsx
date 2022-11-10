@@ -49,7 +49,6 @@ function SearchPlants() {
           value={search}
           aria-label="Search"
         />
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
       <div className="container g-3">
         <div className="row g-3 mt-3">
@@ -64,6 +63,7 @@ function SearchPlants() {
               })}
         </div>
       </div>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
     // </div>
   );

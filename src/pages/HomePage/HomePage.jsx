@@ -23,7 +23,9 @@ function HomePage() {
                   className="imgHome1 img-fluid "
                   alt="imageplant"
                 />
-                <h1 className="mb-3">Search for a plant by Latin Name</h1>
+                <h1 className="mb-3 text-success">
+                  Search for a plant by Latin Name
+                </h1>
               </div>
             </div>
             <SearchPlants />

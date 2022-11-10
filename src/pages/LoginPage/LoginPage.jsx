@@ -90,7 +90,12 @@ function LoginPage() {
                     </button>
                   </div>
                   {errorMessage && (
-                    <p className="error-message">{errorMessage}</p>
+                    <p
+                      className="alert alert-danger error-message"
+                      role="alert"
+                    >
+                      {errorMessage}
+                    </p>
                   )}
                   <p className="text-start my-3">
                     Don't have an account?<span> </span>
