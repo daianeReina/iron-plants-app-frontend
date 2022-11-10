@@ -62,28 +62,35 @@ function ProfilePageEdit() {
             <div className="col">
               <h1 className="text-success"> Edit you settings</h1>
               <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label for="name">Name:</label>
-
-                  <input
-                    className="form-control my-3"
-                    id="exampleFormControlInput1"
-                    type="text"
-                    name="name"
-                    onChange={handleChange}
-                    value={userData.name}
-                  />
+                <div className="form-group row d-flex align-items-center">
+                  <label for="inputName" className="col-sm-2 col-form-label">
+                    Name:
+                  </label>
+                  <div className="col-sm-10">
+                    <input
+                      className="form-control my-3 "
+                      id="exampleFormControlInput1"
+                      type="text"
+                      name="name"
+                      onChange={handleChange}
+                      value={userData.name}
+                    />
+                  </div>
                 </div>
-                <div className="form-group">
-                  <label for="email">Email:</label>
-                  <input
-                    className="form-control my-3"
-                    id="exampleFormControlInput1"
-                    type="email"
-                    name="email"
-                    onChange={handleChange}
-                    value={userData.email}
-                  />
+                <div className="form-group row d-flex align-items-center">
+                  <label for="email" className="col-sm-2 col-form-label">
+                    Email:
+                  </label>
+                  <div className="col-sm-10">
+                    <input
+                      className="form-control my-3"
+                      id="exampleFormControlInput2"
+                      type="email"
+                      name="email"
+                      onChange={handleChange}
+                      value={userData.email}
+                    />
+                  </div>
                 </div>
 
                 <Link className="text-success" to="/profile/edit-password">
@@ -91,7 +98,6 @@ function ProfilePageEdit() {
                 </Link>
                 <br />
                 <Link className="text-success" to="/profile/delete-account">
-                  {" "}
                   Delete your Account
                 </Link>
                 <br />

@@ -50,38 +50,80 @@ function ProfilePageEditPassword() {
   return (
     <div>
       {isLoggedIn && (
-        <>
-          <h1>Edit You Password</h1>
-          <form onSubmit={handleSubmit}>
-            <label>
-              Current Password:
-              <input type="password" name="password" onChange={handleChange} />
-            </label>
-            <br />
-            <label>
-              New Password:
-              <input
-                type="password"
-                name="newPassword"
-                onChange={handleChange}
+        <div className="container">
+          <div className="row align-items-center justify-content-evenly">
+            <div className="col-sm-5">
+              <img
+                className="img-fluid imgPasswordEdit"
+                src="/img-profile.png"
+                alt="img-profile-houseplant"
               />
-            </label>
-            <br />
-            <label>
-              Confirm New Password:
-              <input
-                type="password"
-                name="confirmNewPassword"
-                onChange={handleChange}
-              />
-            </label>
-            <br />
+            </div>
+            <div className="col-sm-5 ">
+              <h1 className="text-success">Edit You Password</h1>
+              <form onSubmit={handleSubmit}>
+                <div className="form-group row d-flex align-items-center ">
+                  <label
+                    for="currentPassword"
+                    className="col-sm-5 col-form-label"
+                  >
+                    Current Password:
+                  </label>
 
-            <button type="submit">Change</button>
-          </form>
+                  <div className="col-sm-6">
+                    <input
+                      className="form-control my-3"
+                      type="password"
+                      name="password"
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
 
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
-        </>
+                <div className="form-group row d-flex align-items-center ">
+                  <label for="newPassword" className="col-sm-5 col-form-label">
+                    New Password:
+                  </label>
+                  <div className="col-sm-6">
+                    <input
+                      className="form-control my-3"
+                      type="password"
+                      name="newPassword"
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group row d-flex align-items-center ">
+                  <label
+                    for="ConfirmNewPassword"
+                    className="col-sm-5 col-form-label"
+                  >
+                    Confirm New Password:
+                  </label>
+                  <div className="col-sm-6">
+                    <input
+                      className="form-control my-3"
+                      type="password"
+                      name="confirmNewPassword"
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+
+                <button className="btn btn-success mt-4" type="submit">
+                  Save
+                </button>
+              </form>
+
+              {errorMessage && (
+                <p className="alert alert-danger error-message">
+                  {errorMessage}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
