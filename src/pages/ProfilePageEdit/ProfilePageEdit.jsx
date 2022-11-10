@@ -50,37 +50,63 @@ function ProfilePageEdit() {
   return (
     <div>
       {isLoggedIn && (
-        <>
-          <h1> Edit you settings</h1>
-          <form onSubmit={handleSubmit}>
-            <label>
-              Name:
-              <input
-                type="text"
-                name="name"
-                onChange={handleChange}
-                value={userData.name}
+        <div className="container">
+          <div className="row align-items-center ">
+            <div className="col">
+              <img
+                className="img-fluid imgProfile"
+                src="/img-profile.png"
+                alt="img-profile-houseplant"
               />
-            </label>
-            <br />
-            <label>
-              Email:
-              <input
-                type="email"
-                name="email"
-                onChange={handleChange}
-                value={userData.email}
-              />
-            </label>
-            <br />
-            <Link to="/profile/edit-password"> Change your Password</Link>
-            <br />
-            <Link to="/profile/delete-account"> Delete your Account</Link>
-            <br />
-            <button type="submit">Change</button>
-          </form>
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
-        </>
+            </div>
+            <div className="col">
+              <h1 className="text-success"> Edit you settings</h1>
+              <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <label for="name">Name:</label>
+
+                  <input
+                    className="form-control my-3"
+                    id="exampleFormControlInput1"
+                    type="text"
+                    name="name"
+                    onChange={handleChange}
+                    value={userData.name}
+                  />
+                </div>
+                <div className="form-group">
+                  <label for="email">Email:</label>
+                  <input
+                    className="form-control my-3"
+                    id="exampleFormControlInput1"
+                    type="email"
+                    name="email"
+                    onChange={handleChange}
+                    value={userData.email}
+                  />
+                </div>
+
+                <Link className="text-success" to="/profile/edit-password">
+                  Change your Password
+                </Link>
+                <br />
+                <Link className="text-success" to="/profile/delete-account">
+                  {" "}
+                  Delete your Account
+                </Link>
+                <br />
+                <button className="btn btn-success mt-4" type="submit">
+                  Save your Changes!
+                </button>
+              </form>
+              {errorMessage && (
+                <p className="alert alert-danger error-message" role="alert">
+                  {errorMessage}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
