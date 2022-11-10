@@ -52,11 +52,20 @@ function SinglePlantPage() {
 
         .map((plant) => {
           return (
-            <div key={plant.id}>
-              <>
-                <DetailsPlant key={plant.id} plant={plant} />
-                <ButtonAddPlant plant={plant} />
-              </>
+            <div
+              className="container d-flex flex-wrap justify-content-center"
+              key={plant.id}
+            >
+              <div className="row">
+                <div className="col">
+                  <DetailsPlant key={plant.id} plant={plant} />
+                </div>
+              </div>
+              <div className="row text-start">
+                <div className="col ">
+                  <ButtonAddPlant plant={plant} />
+                </div>
+              </div>
             </div>
           );
         })
